@@ -24,7 +24,6 @@ def fibonacciMethod(f,a,b,e):
             B.append(B[i])
             A.append(C[i])
 
-
         C.append(B[i + 1] - fib[k - i - 2] / fib[k - i - 1] * (B[i + 1] - A[i + 1]))
         D.append(A[i + 1] + B[i + 1] - C[i + 1])
 
