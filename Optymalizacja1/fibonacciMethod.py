@@ -28,4 +28,3 @@ def fibonacciMethod(f,a,b,e):
         D.append(A[i + 1] + B[i + 1] - C[i + 1])
 
     return C[i + 1]
-
