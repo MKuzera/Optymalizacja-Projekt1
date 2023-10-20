@@ -4,7 +4,7 @@
 # e - dokładnosc obliczeń (e > 0)
 def fibonacciMethod(f,a,b,e):
     if(e < 0 or (b<a)):
-        return "ERROR, bad input"
+        return "ERROR, bad input at fibonacciMethod"
     fib = [0,1]
     k=1
     while fib[k] < (b - a) / e:
