@@ -1,10 +1,12 @@
+from dane import *
+
 def golden_section_search(f, x0, d, alpha, Nmax):
     x = [x0, x0 + d]
     fcalls = 2
     
     if f(x[1]) == f(x[0]):
         return x
-    
+
     if f(x[1]) > f(x[0]):
         d = -d
         x[1] = x[0] + d
