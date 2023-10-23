@@ -10,7 +10,6 @@ def fibonacciMethod(f,a,b,e):
     while fib[k] < (b - a) / e:
         fib.append(fib[-2] + fib[-1])
         k += 1
-
     A = [a]
     B = [b]
     C = [B[0] - fib[k - 1] / fib[k] * (B[0] - A[0])]

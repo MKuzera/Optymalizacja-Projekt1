@@ -1,46 +1,40 @@
 def lagrange(a, b, c, epsilon, gamma, Nmax, f):
-    i = 0
-    a_i, b_i, c_i = a, b, c
-    d_i = 0
-    
-    while True:
-        l = f(a_i) * ((b_i**2 - c_i**2)) + f(b_i) * ((c_i**2 - a_i**2)) + f(c_i) * ((a_i**2 - b_i**2))
-        m = f(a_i) * (b_i - c_i) + f(b_i) * (c_i - a_i) + f(c_i) * (a_i - b_i)
-        
-        if m <= 0:
-            return "Error"
-        
-        d_i = 0.5 * l / m
-        
-        if a_i < d_i < c_i:
-            if f(d_i) < f(c_i):
-                a_i_1 = a_i
-                c_i_1 = d_i
-                b_i_1 = c_i
-            else:
-                a_i_1 = d_i
-                c_i_1 = c_i
-                b_i_1 = b_i
-        elif c_i < d_i < b_i:
-            if f(d_i) < f(c_i):
-                a_i_1 = c_i
-                c_i_1 = d_i
-                b_i_1 = b_i
-            else:
-                a_i_1 = a_i
-                c_i_1 = c_i
-                b_i_1 = d_i
-        else:
-            return "Error"
-        
-        i += 1
-        
-        if i > Nmax:
-            return "Error"
-        
-        if (b_i_1 - a_i_1 < epsilon) or (abs(d_i - d_i_1) < gamma):
-            return d_i_1
 
-        a_i = a_i_1
-        b_i = b_i_1
-        c_i = c_i_1
+    a=[a]
+    b=[b]
+    c=[c]
+    d = []
+    i = 0
+    for i in range(Nmax):
+        l = f(a[i]) * ((b[i]) ** 2 - (c[i]) ** 2) + f(b[i]) * ((c[i]) ** 2 - (a[i]) ** 2) + f(c[i]) * ((a[i]) ** 2 - (b[i]) ** 2)
+        m = f(a[i]) * (b[i] - c[i]) + f(b[i]) * (c[i] - a[i]) + f(c[i]) * (a[i] - b[i])
+
+        if(m <= 0):
+            return "error3 {}".format(i)
+        d.append(0.5*l/m)
+        if a[i] < d[i] < c[i]:
+            if f(d[i]) < f(c[i]):
+                a.append(a[i])
+                c.append(d[i])
+                b.append(c[i])
+            else:
+                a.append(d[i])
+                c.append(c[i])
+                b.append(b[i])
+        else:
+            if c[i] < d[i] < b[i]:
+                if f(d[i]) < f(c[i]):
+                    a.append(c[i])
+                    c.append(d[i])
+                    b.append(b[i])
+                else:
+                    a.append(a[i])
+                    c.append(c[i])
+                    b.append(d[i])
+            else:
+                return "error4"
+
+        if(b[i] - a[i] < epsilon or abs(d[i] - d[i-1]) < gamma):
+            break
+    return d[i]
+

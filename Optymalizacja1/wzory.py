@@ -1,6 +1,7 @@
 from dane import Dane
-class Mthod:
-    
+class Method:
+
+
     def dV_dt(self, D, V, P):
         """
         Zmiana objętość wody w zbiorniku spowodowana
@@ -28,4 +29,7 @@ class Mthod:
             V (_type_): obj w zbirniko
         """
         return (Vin/V)*(Tin - T)
-    
+
+    def funOpt(self):
+        matrixx =[]
+
