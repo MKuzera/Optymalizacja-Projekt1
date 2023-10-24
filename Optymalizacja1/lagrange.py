@@ -1,3 +1,10 @@
+# a - poczatek przedzialu
+# b - koniec przedzialu
+# c - punkt wewnetrzny
+# epsilon
+# gamma
+# Nmax - max ilosc wywołań. (i>Nmax -> error)
+# f - funkcja
 def lagrange(a, b, c, epsilon, gamma, Nmax, f):
 
     a=[a]
@@ -8,7 +15,6 @@ def lagrange(a, b, c, epsilon, gamma, Nmax, f):
     for i in range(Nmax):
         l = f(a[i]) * ((b[i]) ** 2 - (c[i]) ** 2) + f(b[i]) * ((c[i]) ** 2 - (a[i]) ** 2) + f(c[i]) * ((a[i]) ** 2 - (b[i]) ** 2)
         m = f(a[i]) * (b[i] - c[i]) + f(b[i]) * (c[i] - a[i]) + f(c[i]) * (a[i] - b[i])
-
         if(m <= 0):
             return "error3 {}".format(i)
         d.append(0.5*l/m)
