@@ -1,5 +1,7 @@
 import csv
 import math
+from random import randint
+
 from ekspansji import ekspansja
 from fibonacciMethod import fibonacciMethod
 
@@ -13,15 +15,32 @@ def funckja_celu(x):
 
 
 
-# DLA EKSPANSJI :
-#
-#data = [['a', 'b', 'x', 'n']]  # Nagłówki kolumn
-#for i in range(1, 101):
-#    data.append(ekspansja(funckja_celu,84,1.0,1.2,1000))
-#
-#with open('daneLagrangealfa12.csv', 'w', newline='') as csvfile:
-#    csv_writer = csv.writer(csvfile)
-#    csv_writer.writerows(data)
-
-
+def ekspansja_do_csv():
+    data = [['x', 'a', 'b', 'n']]
+    for i in range(1, 101):
+        ekspansja_data = ekspansja(funckja_celu, randint(-100, 100), 1.0, 2.0, 1000)
+        # Przypisz wartości do odpowiednich kolumn
+        row = [ekspansja_data[2], ekspansja_data[0], ekspansja_data[1], ekspansja_data[3]]
+        data.append(row)
+    with open('daneEKSPANSJIalfa20.csv', 'w', newline='') as csvfile:
+        csv_writer = csv.writer(csvfile)
+        csv_writer.writerows(data)
+    data = [['x', 'a', 'b', 'n']]
+    for i in range(1, 101):
+        ekspansja_data = ekspansja(funckja_celu, randint(-100, 100), 1.0, 1.5, 1000)
+        # Przypisz wartości do odpowiednich kolumn
+        row = [ekspansja_data[2], ekspansja_data[0], ekspansja_data[1], ekspansja_data[3]]
+        data.append(row)
+    with open('daneEKSPANSJIalfa15.csv', 'w', newline='') as csvfile:
+        csv_writer = csv.writer(csvfile)
+        csv_writer.writerows(data)
+    data = [['x', 'a', 'b', 'n']]
+    for i in range(1, 101):
+        ekspansja_data = ekspansja(funckja_celu, randint(-100, 100), 1.0, 1.2, 1000)
+        # Przypisz wartości do odpowiednich kolumn
+        row = [ekspansja_data[2], ekspansja_data[0], ekspansja_data[1], ekspansja_data[3]]
+        data.append(row)
+    with open('daneEKSPANSJIalfa12.csv', 'w', newline='') as csvfile:
+        csv_writer = csv.writer(csvfile)
+        csv_writer.writerows(data)
 

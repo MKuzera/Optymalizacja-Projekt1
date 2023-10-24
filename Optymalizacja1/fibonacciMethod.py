@@ -3,6 +3,7 @@
 # b - koniec przedziału poszukiwań
 # e - dokładnosc obliczeń (e > 0)
 def fibonacciMethod(f,a,b,e):
+    j = 0
     if(e < 0 or (b<a)):
         return "ERROR, bad input at fibonacciMethod"
     fib = [0,1]
@@ -16,6 +17,7 @@ def fibonacciMethod(f,a,b,e):
     D = [A[0] + B[0] - C[0]]
 
     for i in range(k - 3):
+        j+=1
         if f(C[i]) < f(D[i]):
             A.append(A[i])
             B.append(D[i])
@@ -26,4 +28,4 @@ def fibonacciMethod(f,a,b,e):
         C.append(B[i + 1] - fib[k - i - 2] / fib[k - i - 1] * (B[i + 1] - A[i + 1]))
         D.append(A[i + 1] + B[i + 1] - C[i + 1])
 
-    return C[i + 1]
+    return [C[i + 1],j]
