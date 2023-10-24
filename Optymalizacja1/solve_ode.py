@@ -6,7 +6,7 @@ def solve_ode(diff, t0, dt, tend, Y0, ud1, ud2):
         if N < 2:
             raise Exception("solve_ode: Time interval is not defined correctly")
         
-        n, _ = Y0.shape
+        _, n = Y0.shape
         if n != 1:
             raise Exception("solve_ode: Initial condition must be a column vector")
         
