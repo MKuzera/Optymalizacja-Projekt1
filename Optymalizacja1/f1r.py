@@ -34,8 +34,8 @@ def f1r(x, ud1, ud2):
 
     return np.abs(max - 50)
 DA = 0.01
-ud1 = np.array([DA])
-ud2 = np.array([Dane.Db])
+ud1 = np.array(DA)
+ud2 = np.array(Dane.Db)
 
 result = f1r(DA, ud1, ud2)
 
