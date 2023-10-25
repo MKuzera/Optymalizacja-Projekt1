@@ -11,7 +11,7 @@ def lagrange(a, b, c, epsilon, gamma, Nmax, f):
     b=[b]
     c=[c]
     d = []
-    i = 0
+    i =0
     for i in range(Nmax):
         l = f(a[i]) * ((b[i]) ** 2 - (c[i]) ** 2) + f(b[i]) * ((c[i]) ** 2 - (a[i]) ** 2) + f(c[i]) * ((a[i]) ** 2 - (b[i]) ** 2)
         m = f(a[i]) * (b[i] - c[i]) + f(b[i]) * (c[i] - a[i]) + f(c[i]) * (a[i] - b[i])
