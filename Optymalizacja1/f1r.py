@@ -1,3 +1,5 @@
+import math
+
 from solve_ode import solve_ode
 import numpy as np
 from dane import Dane
@@ -22,20 +24,6 @@ def df1(t, Y, ud1, ud2):
     Tbdot = (DA * np.sqrt(2 * g * a * (Ta - Y[0])) / (Pa * b) - DB * np.sqrt(2 * g * a * (Y[1] - Tb)) / (Pb * b)) / Vb
     return np.array([Tadot, Tbdot]).reshape((2, 1))
 
-#df1 powinno zwracac macierz [x,x,x]
-
-#matrix df1(double t, matrix Y, matrix ud1, matrix ud2)
-#{
-#matrix dY(3, 1);
-#double a = 0.98, b = 0.63, g = 9.81, PA = 0.75, TA = 90, PB = 1.0, DB = 0.00365665, Fin = 0.01, Tin= 10;
-#double FAout = Y(0)>0? a * b * m2d(ud2) * sqrt(2 * g * Y(0) / PA):0;
-#double FBout = Y(1)>1?a * b * DB * sqrt(2 * g * Y(1) / PB):0;
-#dY(0) = -FAout;
-#dY(1) = FAout + Fin - FBout;
-#dY(2) = Fin / Y(1) * (Tin - Y(2)) + FAout / Y(1) * (TA - Y(2));
-#// std::cout << dY << std::endl;
-#return dY;
-#}
 
 
 def f1r(x, ud1, ud2):

@@ -2,7 +2,10 @@
 # a - początek przedziału poszukiwań
 # b - koniec przedziału poszukiwań
 # e - dokładnosc obliczeń (e > 0)
+import math
+
 def fibonacciMethod(f,a,b,e):
+
     if(e < 0 or (b<a)):
         return "ERROR, bad input at fibonacciMethod"
     fib = [0,1]

@@ -30,6 +30,4 @@ class Method:
         """
         return (Vin/V)*(Tin - T)
 
-    def funOpt(self):
-        matrixx =[]
 
