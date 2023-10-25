@@ -23,7 +23,7 @@ def df1(t, Y, ud1, ud2):
     return np.array([Tadot, Tbdot]).reshape((2, 1))
 
 def f1r(x, ud1, ud2):
-    y0 = np.array([[5.0], [1.0], [10.0]])
+    y0 = np.array([5.0, 1.0, 10.0])
     y = solve_ode(df1, 0, 1, 1000, y0, ud1, x)
     n = y[0].shape[0]
     max = y[1][:, 2].max()
