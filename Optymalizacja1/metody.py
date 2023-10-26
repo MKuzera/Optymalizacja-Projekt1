@@ -6,6 +6,7 @@ from fibonacciMethod import fibonacciMethod
 from solve_ode import solve_ode
 from scipy.integrate import odeint
 from matplotlib import pyplot as plt
+from lagrange import lagrange
 # 
 
 
@@ -23,13 +24,14 @@ def fun(x):
     res = odeint(F1R,[Dane.Va,Dane.Vb,Dane.Tb],ud2,args=(x,))
     TBmax = max(res[:,2])
     return abs(TBmax - 50), res
-# print(fun(4))
 
 wynik1, wynik2 = ekspansja(fun, 0.0, 0.001, 1.2, 1000)
+print(wynik1)
 print(wynik2)
 
 wynikFibo= fibonacciMethod(fun, wynik1, wynik2, 1e-7)
 print(wynikFibo)
+wynikLagrange = lagrange(wynik1, wynik2, 0.0, 0.001, 1e-7, 1000, fun)
 fun_plt=fun(wynikFibo)
 plt_arg=fun_plt[1][:,2]    
 plt.plot(ud2, plt_arg, label='TB(t)')
