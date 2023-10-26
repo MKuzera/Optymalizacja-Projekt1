@@ -30,7 +30,6 @@ def lagrange_do_csv(all):
 
 
 def ekspansja_do_csv():
-    # data = [['x', 'a', 'b', 'calls']]
     all = []
     data = []
     for i in range(1, 101):
@@ -41,7 +40,6 @@ def ekspansja_do_csv():
     with open('daneCSV/daneEKSPANSJIalfa20.csv', 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerows(data)
-
     all += data
     data = []
     for i in range(1, 101):
@@ -51,8 +49,6 @@ def ekspansja_do_csv():
     with open('daneCSV/daneEKSPANSJIalfa15.csv', 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerows(data)
-
-
     all += data
     data = []
     for i in range(1, 101):

@@ -15,9 +15,9 @@ from lagrange import *;
 #x = fibonacciMethod(funckja_celu,-10,10,0.00001)
 #print(x)
 
-all = ekspansja_do_csv()
-fibonacci_do_csv(all)
-lagrange_do_csv(all)
+#all = ekspansja_do_csv()
+#fibonacci_do_csv(all)
+#lagrange_do_csv(all)
 
 #print(funckja_celu(x))
 #lagrange dziala!

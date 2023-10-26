@@ -10,6 +10,7 @@ def funckja_celu(x):
 
 
 
+
 def fibonacciMethod(a, b, e):
     global calls
     calls = 0
@@ -74,7 +75,6 @@ def lagrange(a, b, c, epsilon, gamma, Nmax):
                     b.append(d[i])
             else:
                 return "error4"
-
         if(b[i] - a[i] < epsilon or abs(d[i] - d[i-1]) < gamma):
             break
     return [d[i],funckja_celu(d[i]),calls-1,d[i]]
@@ -103,3 +103,5 @@ def ekspansja(x0,d,alpha,nmax):
         return [x0,x[i-1],x[i+1],calls]
     return [x0,x[i+1],x[i-1],calls]
 
+print(fibonacciMethod(-100,100,0.00001))
+print(lagrange(-100,100, 0, 0.00001,0.00001,1000))
