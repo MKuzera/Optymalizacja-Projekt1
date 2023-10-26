@@ -36,7 +36,7 @@ def fibonacciMethod(a, b, e):
 
         C.append(B[i + 1] - fib[k - i - 2] / fib[k - i - 1] * (B[i + 1] - A[i + 1]))
         D.append(A[i + 1] + B[i + 1] - C[i + 1])
-
+        #print tutaj b[i] - a[i]
     return [C[i + 1],funckja_celu(C[i+1]),calls-1,C[i+1]]
 
 def lagrange(a, b, c, epsilon, gamma, Nmax):
@@ -54,6 +54,7 @@ def lagrange(a, b, c, epsilon, gamma, Nmax):
         if(m <= 0):
             return "error3 {}".format(i)
         d.append(0.5*l/m)
+
         if a[i] < d[i] < c[i]:
             if funckja_celu(d[i]) < funckja_celu(c[i]):
                 a.append(a[i])
@@ -75,9 +76,14 @@ def lagrange(a, b, c, epsilon, gamma, Nmax):
                     b.append(d[i])
             else:
                 return "error4"
-        if(b[i] - a[i] < epsilon or abs(d[i] - d[i-1]) < gamma):
+        #print(b[i] - a[i])
+        if(b[i] - a[i] < epsilon or abs(d[i] - d[i-1]) < gamma) and i>1:
+
+
             break
     return [d[i],funckja_celu(d[i]),calls-1,d[i]]
+
+
 
 def ekspansja(x0,d,alpha,nmax):
     global calls
@@ -105,3 +111,4 @@ def ekspansja(x0,d,alpha,nmax):
 
 print(fibonacciMethod(-100,100,0.00001))
 print(lagrange(-100,100, 0, 0.00001,0.00001,1000))
+
