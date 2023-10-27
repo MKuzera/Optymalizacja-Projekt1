@@ -5,62 +5,58 @@ from ekspansji import ekspansja
 from fibonacciMethod import fibonacciMethod
 from solve_ode import solve_ode
 from scipy.integrate import odeint
-import pandas as pd
 from matplotlib import pyplot as plt
-<<<<<<< HEAD
 from lagrange import lagrange
-=======
-import pdb
->>>>>>> 58fa75d (create plot)
+import csv
 # 
+data=[]
+calls=0
 
-DATA = {'Va':[], 'Vb': []}
-
-ud2 = np.linspace(0, 1000, 1001)
+ud2 = np.linspace(0, 1000, 1000)
 def F1R(ud1,ud2,x):
-    # print(x)
+    global data
     if ud1[0] >= 0:
         res = - Dane.a * Dane.b * x * np.sqrt(2 * Dane.g * ud1[0] / Dane.Pa)
     else:
         res = 0
     d2 = - Dane.a * Dane.b * Dane.Db * np.sqrt(2 * Dane.g * ud1[1] / Dane.Pb) + Dane.Fbin - res
     d3 = (-res * (Dane.Ta - ud1[2]) + Dane.Fbin * (Dane.Tbin - ud1[2])) / ud1[1]
-
+    data.append([ud1[0], ud1[1], ud1[2]])
     return [res, d2, d3]
-
+def write_to_csv(filename):
+    with open(filename, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(['Va', 'Vb', 'Tb'])
+        for row in data:
+            writer.writerow(row)
 def fun(x):
+    global calls
+    calls+=1
     res = odeint(F1R,[Dane.Va,Dane.Vb,Dane.Tb],ud2,args=(x,))
     TBmax = max(res[:,2])
-<<<<<<< HEAD
-    return abs(TBmax - 50), res
-=======
-    TBmax_res = abs(TBmax - 50)
-    return TBmax_res, res
->>>>>>> 58fa75d (create plot)
+    # print(TBmax)
+    return abs(TBmax - 50)
 
-wynik1, wynik2 = ekspansja(fun, 0.0, 0.001, 1.2, 1000)
+wynik1, wynik2 = ekspansja(fun, 0.0, 0.001, 1.1, 1000)
+
 print(wynik1)
 print(wynik2)
-
+data=[]
+l=fun(3.3)*(4.2**2.0)
 wynikFibo= fibonacciMethod(fun, wynik1, wynik2, 1e-7)
-print(wynikFibo)
-wynikLagrange = lagrange(wynik1, wynik2, 0.0, 0.001, 1e-7, 1000, fun)
-fun_plt=fun(wynikFibo)
-# pdb.set_trace()
-
-plt_arg=fun_plt[1][:,2]
-
-DATA['Va'] = fun_plt[1][:, 0]
-DATA['Vb'] = fun_plt[1][:, 1]
+write_to_csv('fibonacci.csv')
+data=[]
+wynikLagrange = lagrange(wynik1, wynik2, ((wynik1+wynik2)/2), 0.001, 0.0000001, 1000, fun)
+write_to_csv('lagrange.csv')
 
 
-pd.DataFrame.from_dict(DATA).to_csv('test_sym_table.csv')
-plt.plot(ud2, plt_arg, label='TB(t)')
+# plt_arg=fun_plt[1][:,2]    
+# plt.plot(ud2, plt_arg, label='TB(t)')
 # plt.plot(ud2, np.full((len(ud2), 1), 50), label='Max TB')
-plt.xlabel('Czas')
-plt.ylabel('Temperatura')
-plt.legend()
-plt.show()
+# plt.xlabel('Czas')
+# plt.ylabel('Temperatura')
+# plt.legend()
+# plt.show()
 
 
 
